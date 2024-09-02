@@ -1,5 +1,7 @@
 // // Inclusion of necessary libraries
 #include<smorphi.h>
+#include<Pixy2ICSP_ESP32.h>
+Pixy2ICSP_ESP32 pixy;
 
 // Smorphi is instantiated as my_robot
 Smorphi my_robot;
@@ -29,6 +31,9 @@ void setup() {
 //   // put your setup code here, to run once:
   Serial.begin(115200);
   my_robot.BeginSmorphi();
+  Serial.print("Starting...\n");
+  
+  pixy.init();
 //   myHuskySerial.begin(9600);         //Baud rate for HuskyLens communication. Can change from GUI of the HuskyLens
 //   while (!huskylens.begin(myHuskySerial)) //Establishing communication with HuskyLens
 //   {
@@ -44,6 +49,22 @@ void loop() {
 //   // put your main code here, to run repeatedly:
   int i;
   sensor_initialisation();
+  // grab blocks!
+  pixy.ccc.getBlocks();
+  
+  // If there are detect blocks, print them!
+  if (pixy.ccc.numBlocks)
+  {
+    Serial.print("Detected ");
+    Serial.println(pixy.ccc.numBlocks);
+    for (i=0; i<pixy.ccc.numBlocks; i++)
+    {
+      Serial.print("  block ");
+      Serial.print(i);
+      Serial.print(": ");
+      pixy.ccc.blocks[i].print();
+    }
+  }  
 
 //     if (!huskylens.request()) Serial.println(F("Fail to request data from HUSKYLENS, recheck the connection!"));
 //   else if(!huskylens.isLearned()) Serial.println(F("Nothing learned, press learn button on HUSKYLENS to learn one!"));
