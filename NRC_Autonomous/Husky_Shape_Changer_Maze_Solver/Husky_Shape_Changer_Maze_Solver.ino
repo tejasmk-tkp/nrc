@@ -1,7 +1,5 @@
 // // Inclusion of necessary libraries
 #include<smorphi.h>
-// //#include "HUSKYLENS.h"      // Library for HuskyLens
-#include "SoftwareSerial.h" // Library for Software
 
 // Smorphi is instantiated as my_robot
 Smorphi my_robot;
@@ -40,7 +38,7 @@ void setup() {
 //       delay(100);
 //   }
 
-// }
+}
 
 void loop() {
 //   // put your main code here, to run repeatedly:
@@ -135,4 +133,4 @@ void loop() {
 // //  my_robot.sm_reset_M3();
 // //  my_robot.sm_reset_M4();
  
-// }
+}
