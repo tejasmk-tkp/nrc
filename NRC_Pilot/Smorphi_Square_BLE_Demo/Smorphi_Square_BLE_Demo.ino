@@ -5,8 +5,6 @@
 #include <BLE2902.h>
 
 
-
-
 BLECharacteristic *pCharacteristic; // Pointer to the BLE characteristic for notifications
 bool deviceConnected = false;       // Flag to track BLE connection status
 float txValue = 1;                  // Variable to store the value to be sent
