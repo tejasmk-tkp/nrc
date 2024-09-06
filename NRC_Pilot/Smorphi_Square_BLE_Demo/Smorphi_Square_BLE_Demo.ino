@@ -341,7 +341,7 @@ class MyCallbacks : public BLECharacteristicCallbacks
     void onWrite(BLECharacteristic *pCharacteristic) 
     {
 
-        std::string rxValue = pCharacteristic->getValue();
+        std::string rxValue = pCharacteristic->getValue().c_str();
         rxString = String(rxValue.c_str());
 
         if (rxValue.length() > 0) 

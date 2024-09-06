@@ -5,12 +5,6 @@ Pixy2ICSP_ESP32 pixy;
 
 // Smorphi is instantiated as my_robot
 Smorphi my_robot;
-// HUSKYLENS huskylens;        // Create an object for HuskyLens
-
-// SoftwareSerial myHuskySerial(26, 27); // RX is Pin 26, TX is Pin 27
-
-// void printResult(HUSKYLENSResult result); //Function for serial print results from the sensor
-
 
 // // Setting up variables and required flags
 int front_sensor_status ;
@@ -22,10 +16,6 @@ String I_shape_done = "false";
 String O_shape_done = "false";
 String red_color_done = "false";
 String yellow_color_done = "false";
-// Husky color_detected status written as variable
-// int color_signature;
-// int command_block;
-
 
 void setup() {
 //   // put your setup code here, to run once:
@@ -34,22 +24,12 @@ void setup() {
   Serial.print("Starting...\n");
   
   pixy.init();
-//   myHuskySerial.begin(9600);         //Baud rate for HuskyLens communication. Can change from GUI of the HuskyLens
-//   while (!huskylens.begin(myHuskySerial)) //Establishing communication with HuskyLens
-//   {
-//       Serial.println(F("Begin failed!"));
-//       Serial.println(F("1.Please recheck the \"Protocol Type\" in HUSKYLENS (General Settings>>Protocol Type>>Serial 9600)"));
-//       Serial.println(F("2.Please recheck the connection."));
-//       delay(100);
-//   }
-
 }
 
 void loop() {
-//   // put your main code here, to run repeatedly:
+
   int i;
   sensor_initialisation();
-  // grab blocks!
   pixy.ccc.getBlocks();
   
   // If there are detect blocks, print them!
